@@ -11,7 +11,7 @@ This script should be usable on any base GNU/Linux operating system. However, th
 ## Usage
 This script can be installed with the following command:
 
-### `curl -sSL [get-url-after-upload] | sudo bash`
+### `curl -sSL https://raw.githubusercontent.com/MsFloofie/ArchiSteamFarm-Installer/main/asf.sh | sudo bash`
 
 ## Credit
 Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm
