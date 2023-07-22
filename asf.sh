@@ -144,6 +144,7 @@ download() {
     mkdir /home/asf/ArchiSteamFarm
     unzip -qq /tmp/ASF.zip -d /home/asf/ArchiSteamFarm
     ok_message "Extracted to directory"
+    printf "\\n"
 }
 
 crypt() {
@@ -157,7 +158,8 @@ crypt() {
     # The actual Cryptkey file
     touch /etc/asf/asf
     echo ASF_CRYPTKEY="$(openssl rand -hex 64)" >> /etc/asf/asf
-    ok_message "Custom Cryptkey set!" 
+    ok_message "Custom Cryptkey set!"
+    printf "\\n"
 }
 
 config() {
