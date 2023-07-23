@@ -41,12 +41,12 @@ info_message() {
 formatted_message() { 
     SIGN="$1"; shift
 
-    printf "${SIGN} | $1\\n" ; shift
+    echo "${SIGN} | $1" ; shift
 
     LINES_ARRAY=("$@")
 
     for line in "${LINES_ARRAY[@]}"; do
-        printf "    | ${line}\\n"
+        echo "    | ${line}"
     done
 }
 
@@ -55,8 +55,8 @@ formatted_message() {
 
 # Simple little thing to make sure that we have the packages available
 dep_check() {
-    if ! command -v $@ > /dev/null ; then
-        error_message "You don't have $@ installed!" \
+    if ! command -v "$@" > /dev/null ; then
+        error_message "You don't have $* installed!" \
             "Please install it before continuing." &&
         exit 1
     fi
@@ -73,7 +73,7 @@ main() {
     if [[ "${EUID}" -eq 0 ]]; then
         # all is cool
         ok_message "${str}"
-        printf "\\n"
+        echo
 
         os_check
         arch_check
@@ -99,7 +99,7 @@ os_check() {
         # Check if they are using systemd init
         if [[ -d '/run/systemd/system' ]]; then
             ok_message "OS supported!"
-            printf "\\n"
+            echo
         else
             error_message "You're using OpenRC or some other init system I don't know."\
             "If you know how to send a pull request for this, please do!"
@@ -131,7 +131,7 @@ arch_check() {
     esac
 
     ok_message "Architecture identified as $(uname -m), so we will download the $ARCH version."
-    printf "\\n"
+    echo
     ASF=https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-$ARCH.zip
 }
 
@@ -144,7 +144,7 @@ download() {
     mkdir /home/asf/ArchiSteamFarm
     unzip -qq /tmp/ASF.zip -d /home/asf/ArchiSteamFarm
     ok_message "Extracted to directory"
-    printf "\\n"
+    echo
 }
 
 crypt() {
@@ -159,7 +159,7 @@ crypt() {
     touch /etc/asf/asf
     echo ASF_CRYPTKEY="$(openssl rand -hex 64)" >> /etc/asf/asf
     ok_message "Custom Cryptkey set!"
-    printf "\\n"
+    echo
 }
 
 config() {
@@ -182,7 +182,7 @@ config() {
 EOF
     
     # Get a password. TODO: MAKE THIS MORE SECURE OR ASK USER FOR A PASSWORD!!
-    PW=$(cat /dev/urandom | head | sha256sum | base64 | head -c 32 ; echo)
+    PW=$(head /dev/urandom | sha256sum | base64 | head -c 32 ; echo)
     
     # Specify the password and headless mode
     cat > /home/asf/ArchiSteamFarm/config/ASF.json <<EOF
