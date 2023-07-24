@@ -95,7 +95,7 @@ os_check() {
     info_message "Checking OS..."
 
     # Check if running GNU/Linux type OS
-    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    case $OSTYPE in linux-gnu*)
         # Check if they are using systemd init
         if [[ -d '/run/systemd/system' ]]; then
             ok_message "OS supported!"
@@ -105,10 +105,12 @@ os_check() {
             "If you know how to send a pull request for this, please do!"
             exit 1
         fi
-    else
+        ;;
+    *)
+    
         error_message "OS type not found. If you're running GNU/Linux, please report this on GitHub!"
         exit 1
-    fi
+    esac
 }
 
 arch_check() {
@@ -117,7 +119,7 @@ arch_check() {
         x86_64)
             ARCH=x64
             ;;
-        arm)
+        arm|armv7l)
             ARCH=arm
             ;;
         aarch64)
