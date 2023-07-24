@@ -117,7 +117,7 @@ arch_check() {
         x86_64)
             ARCH=x64
             ;;
-        arm)
+        arm|armv7l)
             ARCH=arm
             ;;
         aarch64)
