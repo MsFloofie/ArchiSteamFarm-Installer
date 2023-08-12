@@ -41,12 +41,14 @@ info_message() {
 formatted_message() { 
     SIGN="$1"; shift
 
-    echo "${SIGN} | $1" ; shift
+    printf "%s | %s" "${SIGN}" "$1"; shift
+    echo
 
     LINES_ARRAY=("$@")
 
     for line in "${LINES_ARRAY[@]}"; do
-        echo "    | ${line}"
+        printf "    | %s" "${line}"
+        echo
     done
 }
 
