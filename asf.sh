@@ -26,29 +26,27 @@ CROSS="[${COL_LIGHT_RED}✗${COL_NC}]"
 INFO="[${COL_LIGHT_BLUE}i${COL_NC}]"
 
 # Message Formatting
-ok_message() { 
+ok_message() {
     formatted_message "${TICK}" "$@"
 }
 
-error_message() { 
+error_message() {
     >&2 formatted_message "${CROSS}" "$@"
 }
 
-info_message() { 
+info_message() {
     formatted_message "${INFO}" "$@"
 }
 
-formatted_message() { 
+formatted_message() {
     SIGN="$1"; shift
 
-    printf "%s | %s" "${SIGN}" "$1"; shift
-    echo
+    printf "${SIGN} | $1\\n" ; shift
 
     LINES_ARRAY=("$@")
 
     for line in "${LINES_ARRAY[@]}"; do
-        printf "    | %s" "${line}"
-        echo
+        printf "    | ${line}\\n"
     done
 }
 
@@ -63,19 +61,19 @@ dep_check() {
         exit 1
     fi
 }
-dep_check wget 
-dep_check openssl 
+dep_check wget
+dep_check openssl
 dep_check unzip
 
 main() {
     # Check for root
     local str="Root user check"
-    
+
     # If the user ID is zero (root),
     if [[ "${EUID}" -eq 0 ]]; then
         # all is cool
         ok_message "${str}"
-        echo
+        printf "\\n"
 
         os_check
         arch_check
@@ -88,7 +86,7 @@ main() {
         error_message "${str}" \
             "This ASF script requires elevated privileges to run." \
             "For any concerns with running as root, you can check the installer." \
-            "Make sure you downloaded this from a trusted source!" 
+            "Make sure you downloaded this from a trusted source!"
         exit 1
     fi
 }
@@ -101,7 +99,7 @@ os_check() {
         # Check if they are using systemd init
         if [[ -d '/run/systemd/system' ]]; then
             ok_message "OS supported!"
-            echo
+            printf "\\n"
         else
             error_message "You're using OpenRC or some other init system I don't know."\
             "If you know how to send a pull request for this, please do!"
@@ -109,7 +107,7 @@ os_check() {
         fi
         ;;
     *)
-    
+
         error_message "OS type not found. If you're running GNU/Linux, please report this on GitHub!"
         exit 1
     esac
@@ -135,7 +133,7 @@ arch_check() {
     esac
 
     ok_message "Architecture identified as $(uname -m), so we will download the $ARCH version."
-    echo
+    printf "\\n"
     ASF=https://github.com/JustArchiNET/ArchiSteamFarm/releases/latest/download/ASF-linux-$ARCH.zip
 }
 
@@ -148,22 +146,22 @@ download() {
     mkdir /home/asf/ArchiSteamFarm
     unzip -qq /tmp/ASF.zip -d /home/asf/ArchiSteamFarm
     ok_message "Extracted to directory"
-    echo
+    printf "\\n"
 }
 
 crypt() {
     info_message "Setting custom Cryptkey in /etc/asf"
     mkdir -p /etc/asf
-    
+
     #Make sure no one else can touch it
     chown -hR root:root /etc/asf
     chmod 700 /etc/asf
-    
+
     # The actual Cryptkey file
     touch /etc/asf/asf
     echo ASF_CRYPTKEY="$(openssl rand -hex 64)" >> /etc/asf/asf
     ok_message "Custom Cryptkey set!"
-    echo
+    printf "\\n"
 }
 
 config() {
@@ -184,10 +182,10 @@ config() {
         ]
     }
 EOF
-    
+
     # Get a password. TODO: MAKE THIS MORE SECURE OR ASK USER FOR A PASSWORD!!
     PW=$(head /dev/urandom | sha256sum | base64 | head -c 32 ; echo)
-    
+
     # Specify the password and headless mode
     cat > /home/asf/ArchiSteamFarm/config/ASF.json <<EOF
     {
@@ -216,7 +214,7 @@ tidy_up () {
 
 main
 
-# Echo PW and plead user to change it 
+# Echo PW and plead user to change it
 ok_message "The ASF install is complete!" \
     "To access the IPC, go to http://localhost:1242 on this machine and use the password $(tput bold)$PW$(tput sgr0)"\
     "Please make sure to change the IPC password as soon as possible!"
