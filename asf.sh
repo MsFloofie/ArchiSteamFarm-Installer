@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#####################################################
+#############################################
 # ArchiSteamFarm installer made by Floofie. #
-#####################################################
+#############################################
 
 # -e option instructs bash to exit immediately if a command exits with a non-zero status.
 # -E option instructs bash that the ERR trap is inherited by shell functions.
