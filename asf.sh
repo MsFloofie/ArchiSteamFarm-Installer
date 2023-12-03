@@ -4,8 +4,9 @@
 # ArchiSteamFarm installer made by Floofie. #
 #####################################################
 
-# -e option instructs bash to immediately exit if any command [1] has a non-zero exit status
-set -e
+# -u option instructs bash to treat unset variables as an error when substituting.
+# -e option instructs bash to exit immediately if a command exits with a non-zero status.
+set -ue
 
 ####### VARIABLES ########
 
