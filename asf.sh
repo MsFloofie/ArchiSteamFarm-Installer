@@ -4,9 +4,10 @@
 # ArchiSteamFarm installer made by Floofie. #
 #####################################################
 
-# -u option instructs bash to treat unset variables as an error when substituting.
 # -e option instructs bash to exit immediately if a command exits with a non-zero status.
-set -ue
+# -E option instructs bash that the ERR trap is inherited by shell functions.
+# -u option instructs bash to treat unset variables as an error when substituting.
+set -eEu
 
 ####### VARIABLES ########
 
@@ -211,11 +212,26 @@ tidy_up () {
     usermod --shell /usr/sbin/nologin asf
     # Delete tmp file
     rm /tmp/ASF.zip
+
+    # Echo PW and plead user to change it
+    ok_message "The ASF install is complete!" \
+        "To access the IPC, go to http://localhost:1242 on this machine and use the password $(tput bold)$PW$(tput sgr0)"\
+        "Please make sure to change the IPC password as soon as possible!"
 }
 
-main
+cleanup () {
+    # Disable the -e option
+    set +e
+    printf "\\n"
+    info_message "Cleaning up..."
+    rm -rf /tmp/ASF.zip /home/asf/ArchiSteamFarm /etc/asf /etc/systemd/system/ArchiSteamFarm\@.service
+    userdel -rf asf
+    info_message "Cleanup complete"
+    exit 1
+    printf "\\n"
+}
 
-# Echo PW and plead user to change it
-ok_message "The ASF install is complete!" \
-    "To access the IPC, go to http://localhost:1242 on this machine and use the password $(tput bold)$PW$(tput sgr0)"\
-    "Please make sure to change the IPC password as soon as possible!"
+trap "error_message An\ error\ occurred! To\ be\ safe,\ the\ script\ cannot\ continue.; cleanup" ERR
+trap "error_message SIGINT\ caught!; cleanup" SIGINT
+
+main
