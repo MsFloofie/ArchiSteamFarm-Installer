@@ -227,8 +227,8 @@ cleanup () {
     rm -rf /tmp/ASF.zip /home/asf/ArchiSteamFarm /etc/asf /etc/systemd/system/ArchiSteamFarm\@.service
     userdel -rf asf
     info_message "Cleanup complete"
-    exit 1
     printf "\\n"
+    exit 1
 }
 
 trap "error_message An\ error\ occurred! To\ be\ safe,\ the\ script\ cannot\ continue.; cleanup" ERR
