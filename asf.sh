@@ -161,7 +161,7 @@ crypt() {
 
     # The actual Cryptkey file
     touch /etc/asf/asf
-    echo ASF_CRYPTKEY="$(openssl rand -hex 64)" >> /etc/asf/asf
+    echo ASF_CRYPTKEY="$(openssl rand -hex 64)" > /etc/asf/asf
     ok_message "Custom Cryptkey set!"
     printf "\\n"
 }
