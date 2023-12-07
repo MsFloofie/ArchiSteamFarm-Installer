@@ -220,10 +220,21 @@ tidy_up () {
 }
 
 cleanup () {
+    read -p "Do you want the script to undo itself? (y/N): " clean # TODO: word this better
+    case $clean in
+    [yY]|[yY]es )
+        printf "\\n"
+        info_message "Cleaning up..."
+        ;;
+    * )
+        printf "\\n"
+        info_message "Exiting..."
+        exit 1
+        ;;
+    esac
+
     # Disable the -e option
     set +e
-    printf "\\n"
-    info_message "Cleaning up..."
     rm -rf /tmp/ASF.zip /home/asf/ArchiSteamFarm /etc/asf /etc/systemd/system/ArchiSteamFarm\@.service
     userdel -rf asf
     info_message "Cleanup complete"
