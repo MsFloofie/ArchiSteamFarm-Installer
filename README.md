@@ -8,15 +8,18 @@ This script should be usable on any base GNU/Linux operating system. However, th
  - `openssl`
  - `unzip`
 
+## Limitations
+This script does not currently work with SELinux
+
 ## Usage
 This script can be installed with the following command:
 
 ### `curl -sSL https://raw.githubusercontent.com/MsFloofie/ArchiSteamFarm-Installer/main/asf.sh | sudo bash`
 Hash of the file:
-- `MD5: d7580fb3f80409d52380e79ee26dc044`
-- `SHA1: ec25b948b3c5ff306afbea418432ff3bdbd2abb9`
-- `SHA256: 94ee1f1867c32fdc0c3723eefb5abb2096c3cdb139329c331213badaee57ec47`
-- `SHA512: 000cb9de169265ab3b2b31e9ee2cb031a915cc14e343a03ff1774ed151ea7787b5473fcf2c1097b9a260fb39b90e8675bfee49ef69509022c4409404490a3fc6`
+- `MD5: 2385aa6859de8a6228b6b1bf399954f6`
+- `SHA1: f7cef71ec76c2fb753439fad183ace79311ef59a`
+- `SHA256: e2a312e326cc2298e5a83bf4d8083239393d388af99054e7b3774611191ec7c0`
+- `SHA512: f813ae6ac5520b195b074bbc9df0e99766c56f2181bc738e4f6e5abe62220a31054d75bf21e8fa9413cefcca57d85221d4f5032a045ea7392bd304c893f591f2`
 
 ## Credit
 Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm
