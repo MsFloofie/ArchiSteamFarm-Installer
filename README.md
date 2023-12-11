@@ -22,7 +22,7 @@ Hash of the file:
 - `SHA512: f813ae6ac5520b195b074bbc9df0e99766c56f2181bc738e4f6e5abe62220a31054d75bf21e8fa9413cefcca57d85221d4f5032a045ea7392bd304c893f591f2`
 
 ## Credit
-Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm
+Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm.  
 Thank you to my friend [CyberDruga](https://github.com/kabessao/) as well for proof-reading my script and giving me advice.
 
 ## License
