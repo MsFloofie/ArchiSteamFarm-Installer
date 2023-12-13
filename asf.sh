@@ -77,6 +77,7 @@ main() {
         ok_message "${str}"
         printf "\\n"
 
+        selinux_check
         os_check
         arch_check
         useradd -m asf # Add ASF user
@@ -89,6 +90,16 @@ main() {
             "This ASF script requires elevated privileges to run." \
             "For any concerns with running as root, you can check the installer." \
             "Make sure you downloaded this from a trusted source!"
+        exit 1
+    fi
+}
+
+selinux_check() {
+    info_message "Checking for SELinux..."
+
+    if [[ -f /etc/sysconfig/selinux ]] && command -v "getenforce" > /dev/null; then
+        error_message "SELinux detected!" \
+        "This script does not allowed to be used on systems with SELinux."
         exit 1
     fi
 }
