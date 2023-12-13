@@ -99,8 +99,11 @@ selinux_check() {
 
     if [[ -f /etc/sysconfig/selinux ]] && command -v "getenforce" > /dev/null; then
         error_message "SELinux detected!" \
-        "This script does not allowed to be used on systems with SELinux."
+        "This script is not allowed to be used on systems with SELinux."
         exit 1
+    else
+        ok_message "SELinux not detected!"
+        printf "\\n"
     fi
 }
 
