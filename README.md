@@ -21,6 +21,9 @@ Hash of the file:
 - `SHA256: 6ef54d77dd5a7d5f1baa1f5606b04cd79aca7af585ce7dfd4cf1c41bf38e5dd0`
 - `SHA512: 715412d0b874f5caadd04d733f75c9622a40173b3e30594574583b446d6b7eefb95ad2b91043b7f6b82354f79fa4baef2c768f579fce1be90097e2c116441eba`
 
+## Roadmap
+ - Fix `trap` commands not working
+
 ## Credit
 Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm.  
 Thank you to my friend [CyberDruga](https://github.com/kabessao/) as well for proof-reading my script and giving me advice.
