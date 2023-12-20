@@ -16,13 +16,10 @@ This script can be installed with the following command:
 
 ### `curl -sSL https://raw.githubusercontent.com/MsFloofie/ArchiSteamFarm-Installer/main/asf.sh | sudo bash`
 Hash of the file:
-- `MD5: 05a777647245c823a2ecea267f4e63a4`
-- `SHA1: a834454a6bd7c5572cdacffed4b26ec2038f0989`
-- `SHA256: 6ef54d77dd5a7d5f1baa1f5606b04cd79aca7af585ce7dfd4cf1c41bf38e5dd0`
-- `SHA512: 715412d0b874f5caadd04d733f75c9622a40173b3e30594574583b446d6b7eefb95ad2b91043b7f6b82354f79fa4baef2c768f579fce1be90097e2c116441eba`
-
-## Roadmap
- - Fix `trap` commands not working
+- `MD5: e550d912dec3b9450ad0c7251be608d6`
+- `SHA1: 87fa3aaf2445f11e1da8cf814c26fcff075fce91`
+- `SHA256: 348f94cebda4143443962a2143fcf72c259085503b127d2dcfaac7d1113a4aae`
+- `SHA512: 2633edc84596cd4f470804e3c588d2989a75e203b8357101fb7395a39fccf53eed81ad34adbaa12d47aefcbd030ba8f56b19153ff80fdbb8d3e805eeb5186806`
 
 ## Credit
 Huge *huge* thank you to [@JustArchi](https://github.com/JustArchi) and all the contributors at [JustArchi.net](https://github.com/JustArchiNET) for providing ArchiSteamFarm.  

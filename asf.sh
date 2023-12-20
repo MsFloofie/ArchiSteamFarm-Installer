@@ -234,7 +234,7 @@ tidy_up () {
 }
 
 cleanup () {
-    read -p "Do you want the script to undo itself? (y/N): " clean # TODO: word this better
+    read -p "Do you want the script to undo itself? (y/N): " clean </dev/tty # TODO: word this better
     case $clean in
     [yY]|[yY]es )
         printf "\\n"
