@@ -2,7 +2,7 @@
 The purpose of this script is to automate the installation of [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) on GNU/Linux based computers with Systemd.
 
 ## Prerequisites
-This script should be usable on any base GNU/Linux operating system. However, three extra packages are needed:
+This script should be usable on any base GNU/Linux operating system. However, four extra packages are needed:
  - `curl`
  - `wget`
  - `openssl`
